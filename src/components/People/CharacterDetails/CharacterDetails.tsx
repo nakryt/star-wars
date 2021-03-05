@@ -37,7 +37,7 @@ const CharacterDetails = () => {
     homeworld,
   } = character;
   return (
-    <section className="characterDetails">
+    <section className="characterDetails container">
       <h1>{name}</h1>
       <ul>
         <li>

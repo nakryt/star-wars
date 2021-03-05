@@ -1,10 +1,14 @@
 @import "~antd/dist/antd.css";
 @import "src/style/reset";
 @import "src/style/breakpoints";
+@import "src/style/color";
+@import "src/style/size";
 
 .app {
+  background-color: $app-background;
   .container {
     max-width: 80%;
+    min-height: $body;
     margin: 0 auto;
 
     @include for-tablet-mini-down {

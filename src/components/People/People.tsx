@@ -53,7 +53,7 @@ const People = () => {
   }, [scrollHandler]);
 
   return (
-    <section className="people" ref={sectionRef}>
+    <section className="people container" ref={sectionRef}>
       <h1>Characters</h1>
       <div className="people__list">
         {people.length > 0

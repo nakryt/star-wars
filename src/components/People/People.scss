@@ -1,7 +1,9 @@
 @import "src/style/breakpoints";
+@import "src/style/size";
 
 .people {
   padding: 2rem 1rem;
+  min-height: $body;
 
   @include for-tablet-mini-down {
     padding: 1rem 0.5rem;
@@ -9,6 +11,7 @@
 
   h1 {
     font-size: 2rem;
+    color: #fff;
   }
 
   .people__list {

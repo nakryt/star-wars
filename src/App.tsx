@@ -12,13 +12,11 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <div className="container">
-        <Switch>
-          <Route path="/people" exact component={People} />
-          <Route path="/people/:id" component={CharacterDetails} />
-          <Route path="/" exact component={Home} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/people" exact component={People} />
+        <Route path="/people/:id" component={CharacterDetails} />
+        <Route path="/" exact component={Home} />
+      </Switch>
     </div>
   );
 }

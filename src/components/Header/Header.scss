@@ -1,14 +1,15 @@
 @import "src/style/color";
+@import "src/style/size";
 
 .header {
   position: sticky;
   top: 0;
   left: 0;
-  height: 60px;
+  height: $header-size;
   display: flex;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: $main;
+  background-color: $header;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
   z-index: 999;
 
@@ -19,12 +20,7 @@
     font-weight: bold;
   }
 
-  //.headerLink:hover {
-  //  color: $hover;
-  //}
-
   .headerLink__active {
     color: $active-link;
-    text-decoration: underline;
   }
 }

@@ -18,7 +18,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: $main;
+  background: $loader-color;
   animation: ldio-ansxjaeyzwr 1s linear infinite;
 }
 .ldio-ansxjaeyzwr div:nth-child(1) > div {
@@ -98,7 +98,7 @@
   height: 200px;
   display: inline-block;
   overflow: hidden;
-  background: #fff;
+  background: $loader-background;
 }
 .ldio-ansxjaeyzwr {
   width: 100%;

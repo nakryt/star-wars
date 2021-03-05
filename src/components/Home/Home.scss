@@ -1,9 +1,16 @@
+@import "src/style/size";
+
 .home {
-  min-height: 100vh;
+  min-height: $body;
+  max-width: 100%;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-image: url("https://media.contentapi.ea.com/content/dam/eacom/en-us/common/home-page-newshero.jpg.adapt.1456w.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
 
   a {
     font-size: 1.4rem;
