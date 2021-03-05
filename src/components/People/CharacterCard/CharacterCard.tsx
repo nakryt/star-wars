@@ -4,12 +4,15 @@ import "./CharacterCard.scss";
 import { Input, Card } from "antd";
 import { setComment } from "../../../redux/people/peopleThunk";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { IComment } from "../../../typings/people";
 import AppComment from "../AppComment/AppComment";
 
 const { Search } = Input;
 
 interface IProps {
+  id: number;
   name: string;
   birth_year: string;
   height: string;
@@ -19,9 +22,11 @@ interface IProps {
   eye_color: string;
   gender: string;
   comments: IComment[];
+  url: string;
 }
 
 const CharacterCard: FC<IProps> = ({
+  id,
   name,
   birth_year,
   height,
@@ -31,28 +36,32 @@ const CharacterCard: FC<IProps> = ({
   eye_color,
   gender,
   comments,
+  url,
 }) => {
   const [commentText, setCommentText] = useState("");
   const dispatch = useDispatch();
   const sendCommentHandler = () => {
     if (commentText.trim()) {
-      dispatch(setComment(name, commentText));
+      dispatch(setComment(id, commentText));
       setCommentText("");
     }
   };
 
-  const nameNode = (
+  const title = (
     <p className="characterCard__title">
       <strong>{name}</strong>
-      <span className="birth-date">
-        <strong>year of birth: </strong>
-        {birth_year}
-      </span>
+      <Link to={`/people/${id}`}>More</Link>
     </p>
   );
   return (
-    <Card title={nameNode} hoverable className="characterCard">
+    <Card title={title} hoverable className="characterCard">
       <ul className="character__options">
+        <li>
+          <p>
+            <strong>Year of birth: </strong>
+            {birth_year}
+          </p>
+        </li>
         <li>
           <p>
             <strong>Gender: </strong>
@@ -81,12 +90,6 @@ const CharacterCard: FC<IProps> = ({
           <p>
             <strong>Skin color: </strong>
             {skin_color}
-          </p>
-        </li>
-        <li>
-          <p>
-            <strong>Eye color: </strong>
-            {eye_color}
           </p>
         </li>
       </ul>

@@ -4,6 +4,11 @@ export const serializePeople = (
   results: ICharacterResponse[]
 ): ICharacter[] => {
   return results.map((item) => {
-    return { ...item, comments: [] };
+    const id = item.url.match(/\/(?<id>[0-9])\/+$/)?.groups?.id;
+    return {
+      ...item,
+      comments: [],
+      id: id ? parseInt(id) : Date.now() + Math.floor(Math.random() * 1000),
+    };
   });
 };

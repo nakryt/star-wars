@@ -2,21 +2,24 @@ import React, { useCallback, useEffect, useRef } from "react";
 import "./People.scss";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getPeopleData } from "../../redux/people/peopleThunk";
+import { getPeopleData, resetPeopleData } from "../../redux/people/peopleThunk";
 import {
   countSelector,
-  itemsSelector,
+  errorSelector,
+  peopleSelector,
   loadingSelector,
 } from "../../redux/people/peopleSlice";
 
 import Loader from "../ui/Loader/Loader";
 import CharacterCard from "./CharacterCard/CharacterCard";
+import { Alert } from "antd";
 
 const People = () => {
   const dispatch = useDispatch();
-  const people = useSelector(itemsSelector);
+  const people = useSelector(peopleSelector);
   const count = useSelector(countSelector);
   const loading = useSelector(loadingSelector);
+  const error = useSelector(errorSelector);
   const sectionRef = useRef<HTMLElement>(null);
 
   const getData = useCallback(() => {
@@ -24,10 +27,9 @@ const People = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    let isCancel = false;
-    if (!isCancel) getData();
+    getData();
     return () => {
-      isCancel = true;
+      dispatch(resetPeopleData());
     };
   }, [dispatch]);
 
@@ -56,13 +58,11 @@ const People = () => {
       <div className="people__list">
         {people.length > 0
           ? people.map((character) => (
-              <CharacterCard
-                key={character.name + character.url}
-                {...character}
-              />
+              <CharacterCard key={character.id} {...character} />
             ))
           : null}
         {loading && <Loader />}
+        {error && <Alert message={error} type="error" />}
       </div>
     </section>
   );

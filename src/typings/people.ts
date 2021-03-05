@@ -36,6 +36,7 @@ export interface IComment {
 
 export interface ICharacter extends ICharacterResponse {
   comments: IComment[];
+  id: number;
 }
 
 export interface IPeople extends IPeopleResponse {

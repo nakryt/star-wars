@@ -2,11 +2,13 @@
 @import "src/style/reset";
 @import "src/style/breakpoints";
 
-.app.container {
-  max-width: 80%;
-  margin: 0 auto;
+.app {
+  .container {
+    max-width: 80%;
+    margin: 0 auto;
 
-  @include for-tablet-mini-down {
-    max-width: 98%;
+    @include for-tablet-mini-down {
+      max-width: 98%;
+    }
   }
 }

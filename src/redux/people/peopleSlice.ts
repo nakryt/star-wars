@@ -35,15 +35,19 @@ export const peopleSlice = createSlice({
     setNextPage: (state, { payload }: PayloadAction<string | null>) => {
       state.next = payload;
     },
-    setResults: (state, { payload }: PayloadAction<ICharacter[]>) => {
-      state.results = [...state.results, ...payload];
+    setPeopleItems: (state, { payload }: PayloadAction<ICharacter[]>) => {
+      if (payload.length === 0) {
+        state.results = [];
+      } else {
+        state.results = [...state.results, ...payload];
+      }
     },
     setComment: (
       state,
-      { payload }: PayloadAction<{ characterName: string; comment: IComment }>
+      { payload }: PayloadAction<{ characterId: number; comment: IComment }>
     ) => {
       const character = state.results.find(
-        (item) => item.name === payload.characterName
+        (item) => item.id === payload.characterId
       );
       if (character) {
         character.comments = [payload.comment, ...character.comments];
@@ -58,7 +62,7 @@ export const {
   setCount,
   setPreviousPage,
   setNextPage,
-  setResults,
+  setPeopleItems,
   setComment,
 } = peopleSlice.actions;
 
@@ -67,6 +71,6 @@ export const errorSelector = ({ people }: RootState) => people.error;
 export const countSelector = ({ people }: RootState) => people.count;
 export const previousPageSelector = ({ people }: RootState) => people.previous;
 export const nextPageSelector = ({ people }: RootState) => people.next;
-export const itemsSelector = ({ people }: RootState) => people.results;
+export const peopleSelector = ({ people }: RootState) => people.results;
 
 export default peopleSlice.reducer;

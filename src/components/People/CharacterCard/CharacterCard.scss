@@ -19,12 +19,8 @@
     display: flex;
     justify-content: space-between;
 
-    @include for-mobile-large-down {
-      .birth-date {
-        strong {
-          display: none;
-        }
-      }
+    a {
+      color: $main;
     }
   }
 
