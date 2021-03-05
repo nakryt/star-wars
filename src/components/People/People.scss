@@ -1,0 +1,19 @@
+@import "src/style/breakpoints";
+
+.people {
+  padding: 2rem 1rem;
+
+  @include for-tablet-mini-down {
+    padding: 1rem 0.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .people__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

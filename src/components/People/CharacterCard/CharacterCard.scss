@@ -1,0 +1,60 @@
+@import "src/style/color";
+@import "src/style/breakpoints";
+
+.characterCard {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  min-width: 300px;
+  width: 90%;
+
+  @include for-mobile-large-down {
+    width: 100%;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .characterCard__title {
+    display: flex;
+    justify-content: space-between;
+
+    @include for-mobile-large-down {
+      .birth-date {
+        strong {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .ant-card-body {
+    display: flex;
+    flex-direction: column;
+
+    .character__options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-auto-flow: row;
+
+      @include for-tablet-large-down {
+        grid-template-rows: repeat(3, 1fr);
+        grid-auto-flow: column;
+      }
+
+      @include for-mobile-large-down {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      li {
+        margin-bottom: 0.4rem;
+      }
+    }
+  }
+
+  .ant-card-actions {
+    display: flex;
+    flex-direction: column;
+  }
+}
